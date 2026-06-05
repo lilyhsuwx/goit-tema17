@@ -12,9 +12,6 @@ const listEl = document.querySelector(".list");
 const loadBtn = document.querySelector(".btn");
 const searchInput = document.querySelector(".input");
 
-// fetch(`${URL}?key=${API_KEY}&q=${search}&page=${currentPage}&per_page=${limit}`)
-// .then(res => res.json())
-// .then(res => console.log(res))
 
 function getImagesApi() {
     return fetch(`${URL}?key=${API_KEY}&q=${search}&page=${currentPage}&per_page=${limit}&orientation=horizontal`)
@@ -24,10 +21,9 @@ function getImagesApi() {
 
 function render() {
     getImagesApi().then((res) => {
-        // console.log(res.totalHits);
-        // console.log(currentPage * limit);
+
         if(currentPage * limit >= res.totalHits) {
-            // loadBtn.style.display = "none"
+
             loadBtn.disabled = true;
             loadBtn.classList.add("disabled-btn")
             loadBtn.textContent = "Більше немає"
